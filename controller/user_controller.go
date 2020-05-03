@@ -1,8 +1,11 @@
 package controller
 
-import "github.com/kataras/iris/v12"
+import (
+	"github.com/kataras/iris/v12"
+	"hj_service/services"
+)
 
 type LoginController struct {
 	Ctx     iris.Context
-	Service service.LoginService
+	Service services.UserService
 }
