@@ -1,4 +1,4 @@
-package routes
+package models
 
 type Result struct {
 	Code int
