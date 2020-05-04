@@ -8,6 +8,6 @@ import (
 
 func App(app *iris.Application) {
 	mvc.Configure(app.Party("/user"), func(context *mvc.Application) {
-		context.Handle(new(controller.UserController))
+		context.Handle(controller.NewUserCotroller())
 	})
 }

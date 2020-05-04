@@ -2,7 +2,7 @@ package datasource
 
 import "hj_service/models"
 
-var user = map[int]models.User{
+var User = map[int]models.User{
 	1: {
 		ID:       1,
 		Name:     "张三",
