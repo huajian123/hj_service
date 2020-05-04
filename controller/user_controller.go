@@ -23,12 +23,3 @@ func (userController *UserController) BeforeActivation(a mvc.BeforeActivation) {
 func (uc *UserController) UserInfo() (result models.Result) {
 	return uc.Service.GetUserList()
 }
-
-/*func (uc *UserController) UserInfo() mvc.Result {
-	return mvc.Response{
-		Object: map[string]interface{}{
-			"code":     0,
-			"msessage": "请求成功",
-			"data":     uc.Service.GetUserList(),
-		}}
-}*/
