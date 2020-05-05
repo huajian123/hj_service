@@ -18,8 +18,12 @@ func NewUserCotroller() *UserController {
 
 func (userController *UserController) BeforeActivation(a mvc.BeforeActivation) {
 	a.Handle("GET", "/query", "UserInfo")
+	a.Handle("GET", "/app", "Aaa")
 }
 
 func (uc *UserController) UserInfo() (result models.Result) {
 	return uc.Service.GetUserList()
+}
+func (uc *UserController) Aaa() int64 {
+	return 123
 }
