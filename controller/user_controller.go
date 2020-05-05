@@ -3,7 +3,6 @@ package controller
 import (
 	"github.com/kataras/iris/v12"
 	"github.com/kataras/iris/v12/mvc"
-	"hj_service/models"
 	"hj_service/services"
 )
 
@@ -21,7 +20,8 @@ func (userController *UserController) BeforeActivation(a mvc.BeforeActivation) {
 	a.Handle("GET", "/app", "Aaa")
 }
 
-func (uc *UserController) UserInfo() (result models.Result) {
+func (uc *UserController) UserInfo() int {
+	println(uc.Service.GetUserList())
 	return uc.Service.GetUserList()
 }
 func (uc *UserController) Aaa() int64 {

@@ -3,26 +3,24 @@ package services
 import (
 	_ "github.com/go-sql-driver/mysql"
 	_ "github.com/xormplus/xorm"
-	"hj_service/models"
-	"hj_service/repositories"
+	"hj_service/dao"
+	"hj_service/datasource"
 )
 
 type UserService interface {
-	GetUserList() (result models.Result)
+	GetUserList() int
 }
 
-type userService struct{}
+type userService struct {
+	dao *dao.UserDao
+}
 
 func NewUserService() UserService {
-	return &userService{}
+	return &userService{
+		dao: dao.NewUserDao(datasource.GetDb()),
+	}
 }
 
-func (u userService) GetUserList() (result models.Result) {
-	// 写sql获取结果返回
-	repositories.NewUserRepository().GetUserList()
-
-	result.Data = "User"
-	result.Code = 0
-	result.Msg = "SUCCESS"
-	return result
+func (u userService) GetUserList() int {
+	return u.dao.GetUserList()
 }
