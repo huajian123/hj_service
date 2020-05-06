@@ -1,6 +1,9 @@
 package dao
 
-import "github.com/xormplus/xorm"
+import (
+	"github.com/xormplus/xorm"
+	"hj_service/models"
+)
 
 type UserDao struct {
 	engine *xorm.Engine
@@ -13,5 +16,6 @@ func NewUserDao(engine *xorm.Engine) *UserDao {
 }
 
 func (u *UserDao) GetUserList() int {
+	u.engine.InsertOne(&models.User{Name: "555", Password: "55", Id: 6, Phone: "5"})
 	return 666
 }
