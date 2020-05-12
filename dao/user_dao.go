@@ -16,6 +16,6 @@ func NewUserDao(engine *xorm.Engine) *UserDao {
 }
 
 func (u *UserDao) GetUserList() int {
-	u.engine.InsertOne(&models.User{Name: "555", Password: "55", Id: 6, Phone: "5"})
+	u.engine.InsertOne(&models.User{Password: "55", Id: 6, Phone: "5"})
 	return 666
 }

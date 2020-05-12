@@ -3,7 +3,7 @@ package home_cotrl
 import (
 	"github.com/kataras/iris/v12"
 	"github.com/kataras/iris/v12/mvc"
-	home_model "hj_service/models/home"
+	"hj_service/models"
 	home_service "hj_service/services/home"
 )
 
@@ -20,6 +20,9 @@ func (projectCategoryController *ProjectCategoryController) BeforeActivation(a m
 	a.Handle("GET", "/queryCategory", "QueryCategory")
 }
 
-func (pc *ProjectCategoryController) QueryCategory() []home_model.ProjectCategory {
-	return pc.Service.GetProjectCategoryList()
+func (pc *ProjectCategoryController) QueryCategory() mvc.Result {
+	data := pc.Service.GetProjectCategoryList()
+	return mvc.Response{
+		Object: models.NewResult(data, 0),
+	}
 }
