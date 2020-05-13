@@ -2,6 +2,7 @@ package home_dao
 
 import (
 	"github.com/xormplus/xorm"
+	"hj_service/models"
 	home_model "hj_service/models/home"
 	"log"
 )
@@ -16,7 +17,7 @@ func NewProjectCategoryDao(engine *xorm.Engine) *ProjectCategoryDao {
 	}
 }
 
-func (p *ProjectCategoryDao) GetProjectCategoryList() []home_model.ProjectCategory {
+func (p *ProjectCategoryDao) GetProjectCategoryList(param models.SearchParam) []home_model.ProjectCategory {
 	dataList := []home_model.ProjectCategory{}
 	err := p.engine.Find(&dataList)
 	if err != nil {

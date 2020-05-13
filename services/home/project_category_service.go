@@ -3,6 +3,7 @@ package home_service
 import (
 	home_dao "hj_service/dao/home"
 	"hj_service/datasource"
+	"hj_service/models"
 	"hj_service/models/home"
 )
 
@@ -11,13 +12,13 @@ type projectCategoryService struct {
 	dao *home_dao.ProjectCategoryDao
 }
 
-func (p projectCategoryService) GetProjectCategoryList() []home_model.ProjectCategory {
-	return p.dao.GetProjectCategoryList()
+func (p projectCategoryService) GetProjectCategoryList(params models.SearchParam) []home_model.ProjectCategory {
+	return p.dao.GetProjectCategoryList(params)
 }
 
 // 接口
 type ProjectCategoryService interface {
-	GetProjectCategoryList() []home_model.ProjectCategory
+	GetProjectCategoryList(models.SearchParam) []home_model.ProjectCategory
 }
 
 // 构造函数
