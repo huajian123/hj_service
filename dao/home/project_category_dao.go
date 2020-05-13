@@ -25,3 +25,11 @@ func (p *ProjectCategoryDao) GetProjectCategoryList(param models.SearchParam) []
 	}
 	return dataList
 }
+
+func (p *ProjectCategoryDao) GetProjectCategoryListCount() int {
+	count, err := p.engine.Count(new(home_model.ProjectCategory))
+	if err != nil {
+		log.Fatalln(err)
+	}
+	return int(count)
+}

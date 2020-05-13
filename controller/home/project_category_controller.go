@@ -32,7 +32,8 @@ func (pc *ProjectCategoryController) QueryCategory() mvc.Result {
 		}
 	}
 	data := pc.Service.GetProjectCategoryList(searchParam)
+	total := pc.Service.GetProjectCategoryListCount()
 	return mvc.Response{
-		Object: models.NewResult(data, 0),
+		Object: models.NewResult(models.PageInfo{List: data, PageSize: searchParam.PageSize, PageNum: searchParam.PageNum, Total: total}, 0),
 	}
 }

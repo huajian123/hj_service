@@ -12,18 +12,23 @@ type projectCategoryService struct {
 	dao *home_dao.ProjectCategoryDao
 }
 
-func (p projectCategoryService) GetProjectCategoryList(params models.SearchParam) []home_model.ProjectCategory {
-	return p.dao.GetProjectCategoryList(params)
-}
-
-// 接口
-type ProjectCategoryService interface {
-	GetProjectCategoryList(models.SearchParam) []home_model.ProjectCategory
-}
-
 // 构造函数
 func NewProjectCategoryService() ProjectCategoryService {
 	return &projectCategoryService{
 		dao: home_dao.NewProjectCategoryDao(datasource.GetDb()),
 	}
+}
+
+// 接口
+type ProjectCategoryService interface {
+	GetProjectCategoryList(models.SearchParam) []home_model.ProjectCategory
+	GetProjectCategoryListCount() int
+}
+
+func (p projectCategoryService) GetProjectCategoryList(params models.SearchParam) []home_model.ProjectCategory {
+	return p.dao.GetProjectCategoryList(params)
+}
+
+func (p projectCategoryService) GetProjectCategoryListCount() int {
+	return p.dao.GetProjectCategoryListCount()
 }
