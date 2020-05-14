@@ -3,7 +3,7 @@ package home_dao
 import (
 	"github.com/xormplus/xorm"
 	"hj_service/models"
-	home_model "hj_service/models/home"
+	"hj_service/models/home"
 	"log"
 )
 
@@ -32,4 +32,13 @@ func (p *ProjectCategoryDao) GetProjectCategoryListCount() int {
 		log.Fatalln(err)
 	}
 	return int(count)
+}
+
+func (p *ProjectCategoryDao) AddProjectCategory(params home_model.ProjectCategory) {
+	count, err := p.engine.Insert(params)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	println(count)
+	return
 }

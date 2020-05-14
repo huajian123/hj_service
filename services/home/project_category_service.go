@@ -23,6 +23,7 @@ func NewProjectCategoryService() ProjectCategoryService {
 type ProjectCategoryService interface {
 	GetProjectCategoryList(models.SearchParam) []home_model.ProjectCategory
 	GetProjectCategoryListCount() int
+	AddProjectCategory(category home_model.ProjectCategory)
 }
 
 func (p projectCategoryService) GetProjectCategoryList(params models.SearchParam) []home_model.ProjectCategory {
@@ -31,4 +32,9 @@ func (p projectCategoryService) GetProjectCategoryList(params models.SearchParam
 
 func (p projectCategoryService) GetProjectCategoryListCount() int {
 	return p.dao.GetProjectCategoryListCount()
+}
+
+func (p projectCategoryService) AddProjectCategory(params home_model.ProjectCategory) {
+	p.dao.AddProjectCategory(params)
+	return
 }
